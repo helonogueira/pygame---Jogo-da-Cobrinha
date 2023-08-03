@@ -58,4 +58,3 @@ def tela_jogo():
         mudanca = direcao
         pontuacao = 0 
 
-# testando
