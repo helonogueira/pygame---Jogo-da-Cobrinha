@@ -32,7 +32,7 @@ def tela_inicial():
                     return 'jogando' 
 
         window.fill((preto))
-        window.blit(img_inicial,(-120,-20))
+        window.blit(img_inicial,(155, 110))
         cor = (255,255,255)
 
 
