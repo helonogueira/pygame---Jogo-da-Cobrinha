@@ -67,3 +67,13 @@ def tela_jogo():
             score_surface = score_font.render('Placar : ' + str(pontuacao), True, branco)
             score_rect = score_surface.get_rect()
             window.blit(score_surface, score_rect)
+
+        def game_over():
+            fonte = pygame.font.SysFont('times new roman', 50)
+            final_jogo = fonte.render('Your Score is : ' + str(pontuacao), True, vermelho)
+            final_jogo_rect = final_jogo.get_rect()
+            final_jogo_rect.midtop = (720/2, 480/4)
+            window.blit(final_jogo, final_jogo_rect)
+            pygame.display.flip()
+            time.sleep(2)
+            pygame.quit()
