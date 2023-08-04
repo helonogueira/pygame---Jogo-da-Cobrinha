@@ -9,9 +9,13 @@ vermelho = pygame.Color(255, 0, 0)
 verde = pygame.Color(0, 255, 0)
 azul = pygame.Color(0, 0, 255)
 
-img_inicial = pygame.image.load('pygame/pygame---Jogo-da-Cobrinha/imagem inicial.png').convert()
+img_inicial = pygame.image.load('pygame\pygame---Jogo-da-Cobrinha\imagem inicial.png').convert()
 
 pygame.init()
+pygame.mixer.init()
+
+eat_sound = pygame.mixer.Sound('pygame\pygame---Jogo-da-Cobrinha\som mordida.wav')
+game_over_sound = pygame.mixer.Sound('pygame\pygame---Jogo-da-Cobrinha\game over sound.wav')
 window = pygame.display.set_mode((720, 480))
 
 def tela_inicial():
