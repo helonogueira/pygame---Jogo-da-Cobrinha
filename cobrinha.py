@@ -77,3 +77,36 @@ def tela_jogo():
             pygame.display.flip()
             time.sleep(2)
             pygame.quit()
+
+        while True:
+            
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_UP:
+                        mudanca = 'cima'
+                    if event.key == pygame.K_DOWN:
+                        mudanca = 'baixo'
+                    if event.key == pygame.K_LEFT:
+                        mudanca = 'esquerda'
+                    if event.key == pygame.K_RIGHT:
+                        mudanca = 'direita'
+
+            if mudanca == 'cima' and direcao != 'baixo':
+                direcao = 'cima'
+            if mudanca == 'baixo' and direcao != 'cima':
+                direcao = 'baixo'
+            if mudanca == 'esquerda' and direcao != 'direita':
+                direcao = 'esquerda'
+            if mudanca == 'direita' and direcao != 'esquerda':
+                direcao = 'direita'
+
+            if direcao == 'cima':
+                posicao_cobra[1] -= 10
+            if direcao == 'baixo':
+                posicao_cobra[1] += 10
+            if direcao == 'esquerda':
+                posicao_cobra[0] -= 10
+            if direcao == 'direita':
+                posicao_cobra[0] += 10
+
+            cobra.insert(0, list(posicao_cobra))
