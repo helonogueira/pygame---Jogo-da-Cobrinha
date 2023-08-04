@@ -9,14 +9,14 @@ vermelho = pygame.Color(255, 0, 0)
 verde = pygame.Color(0, 255, 0)
 azul = pygame.Color(0, 0, 255)
 
-img_inicial = pygame.image.load('pygame\pygame---Jogo-da-Cobrinha\imagem inicial.png').convert()
-
 pygame.init()
 pygame.mixer.init()
 
 eat_sound = pygame.mixer.Sound('pygame\pygame---Jogo-da-Cobrinha\som mordida.wav')
 game_over_sound = pygame.mixer.Sound('pygame\pygame---Jogo-da-Cobrinha\game over sound.wav')
 window = pygame.display.set_mode((720, 480))
+pygame.display.set_caption('Tela inicial')
+img_inicial = pygame.image.load('pygame\pygame---Jogo-da-Cobrinha\imagem inicial.png').convert()
 
 def tela_inicial():
     pygame.display.set_caption('Tela inicial')
@@ -67,17 +67,18 @@ def tela_jogo():
             score_surface = score_font.render('Placar : ' + str(pontuacao), True, branco)
             score_rect = score_surface.get_rect()
             window.blit(score_surface, score_rect)
-
+        
         def game_over():
             fonte = pygame.font.SysFont('times new roman', 50)
             final_jogo = fonte.render('Your Score is : ' + str(pontuacao), True, vermelho)
             final_jogo_rect = final_jogo.get_rect()
             final_jogo_rect.midtop = (720/2, 480/4)
             window.blit(final_jogo, final_jogo_rect)
+            game_over_sound.play()
             pygame.display.flip()
             time.sleep(2)
             pygame.quit()
-
+      
         while True:
             
             for event in pygame.event.get():
@@ -114,6 +115,7 @@ def tela_jogo():
             if posicao_cobra[0] == posicao_fruta[0] and posicao_cobra[1] == posicao_fruta[1]:
                 pontuacao += 10
                 spawn_fruta = False
+                eat_sound.play()
             else:
                 cobra.pop()
                 
@@ -122,7 +124,7 @@ def tela_jogo():
                 
             spawn_fruta = True
             window.fill(preto)
-
+            
             for pos in cobra:
                 pygame.draw.rect(window, azul, pygame.Rect(pos[0], pos[1], 10, 10))
                 
