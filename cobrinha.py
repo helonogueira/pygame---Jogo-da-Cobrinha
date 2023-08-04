@@ -62,3 +62,8 @@ def tela_jogo():
         mudanca = direcao
         pontuacao = 0 
 
+        def placar (choice, color, font, size):
+            score_font = pygame.font.SysFont(font, size)
+            score_surface = score_font.render('Placar : ' + str(pontuacao), True, branco)
+            score_rect = score_surface.get_rect()
+            window.blit(score_surface, score_rect)
