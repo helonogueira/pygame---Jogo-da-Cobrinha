@@ -143,3 +143,11 @@ def tela_jogo():
             pygame.display.update()
 
             fps.tick(vel)
+
+estado = 'inicial'
+            
+while estado != 'sair':
+    if estado == 'inicial':
+        estado = tela_inicial()
+    elif estado == 'jogando':
+        estado = tela_jogo()
