@@ -122,3 +122,24 @@ def tela_jogo():
                 
             spawn_fruta = True
             window.fill(preto)
+
+            for pos in cobra:
+                pygame.draw.rect(window, azul, pygame.Rect(pos[0], pos[1], 10, 10))
+                
+            pygame.draw.rect(window, vermelho, pygame.Rect(posicao_fruta[0], posicao_fruta[1], 10, 10))
+
+            if posicao_cobra[0] < 0 or posicao_cobra[0] > 720-10:
+                game_over()
+            if posicao_cobra[1] < 0 or posicao_cobra[1] > 480-10:
+                game_over()
+            
+            for corpo in cobra:
+                if cobra.count(corpo) > 1:
+                    game_over()
+                
+                                              
+            placar(1, branco, 'times new roman', 20)
+    
+            pygame.display.update()
+
+            fps.tick(vel)
