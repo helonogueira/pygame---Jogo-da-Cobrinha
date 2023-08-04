@@ -110,3 +110,15 @@ def tela_jogo():
                 posicao_cobra[0] += 10
 
             cobra.insert(0, list(posicao_cobra))
+
+            if posicao_cobra[0] == posicao_fruta[0] and posicao_cobra[1] == posicao_fruta[1]:
+                pontuacao += 10
+                spawn_fruta = False
+            else:
+                cobra.pop()
+                
+            if not spawn_fruta:
+                posicao_fruta = [random.randrange(1, (720//10)) * 10,random.randrange(1, (480//10)) * 10]
+                
+            spawn_fruta = True
+            window.fill(preto)
